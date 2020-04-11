@@ -17,6 +17,7 @@ export class NeedsPage implements OnInit {
     this.loadTickets();
   }
 
+
   protected loadTickets() {
       this.ticketsService.getAll().subscribe(tickets => this.tickets = tickets);
   }

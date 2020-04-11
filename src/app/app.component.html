@@ -3,8 +3,24 @@
     <ion-menu contentId="main-content" type="overlay" [disabled]="noMenu">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+          <ion-item *ngIf="appService.isLoggedIn(); else login">
+            <ion-avatar slot="start">
+              <img src="/assets/icon/favicon.png">
+            </ion-avatar>
+            <ion-label>
+              <h2>{{appService.user.first_name}} {{appService.user.last_name}}</h2>
+              <p>{{appService.user.username}}</p>
+            </ion-label>
+            <ion-buttons slot="end">
+              <ion-button (click)="logout()">
+                <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+          <ng-template #login>
+            <p><a [routerLink]="['/login']">Entrar</a></p>
+            <p><a [routerLink]="['/registre']">Registrar-se</a></p>
+          </ng-template>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">

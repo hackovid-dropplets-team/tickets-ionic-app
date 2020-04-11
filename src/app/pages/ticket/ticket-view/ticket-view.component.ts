@@ -15,12 +15,14 @@ export class TicketViewComponent implements OnInit {
   constructor(
     public ticketService: TicketService,
     private route: ActivatedRoute,
-  ) { }
-
-  ngOnInit() {
-    this.loadTicket();
+  ) {
   }
 
+  ngOnInit() {
+  }
+  ionViewDidEnter() {
+    this.loadTicket();
+  }
   protected loadTicket() {
     const id = this.route.snapshot.paramMap.get('id');
     this.ticketService.get(id).subscribe(ticket => this.ticket = ticket);

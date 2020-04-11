@@ -4,15 +4,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'needs',
-    pathMatch: 'full'
-  },
-  {
-    path: 'needs',
     loadChildren: () => import('./pages/needs/needs.module').then( m => m.NeedsPageModule)
   },
   {
-    path: 'my-needs',
+    path: 'necessito',
     loadChildren: () => import('./pages/my-needs/my-needs.module').then( m => m.MyNeedsPageModule)
   },
   {
@@ -27,7 +22,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'register',
+    path: 'registre',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule),
     data: {
       noMenu: true

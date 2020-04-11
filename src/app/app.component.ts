@@ -4,6 +4,8 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, RouterEvent, ActivationStart } from "@angular/router";
+import { AuthService } from "./services/auth.service";
+import { AppService } from "./app.service";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +18,7 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Puc ajudar?',
-      url: '/needs',
+      url: '',
       icon: 'mail'
     },
     {
@@ -31,6 +33,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
+    private authService: AuthService,
+    public appService: AppService,
   ) {
     this.initializeApp();
   }
@@ -52,6 +56,16 @@ export class AppComponent implements OnInit {
   }
 
   loadUser() {
+    this.authService.getUser().subscribe(user => {
+      this.appService.user = user;
+    }, error => {
+      this.appService.user = undefined;
+    });
+  }
 
+  logout() {
+    this.authService.logout().subscribe(res =>  {
+      this.appService.user = undefined;
+    });
   }
 }

@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TicketEditComponent implements OnInit {
 
-  public defaultRef = '/needs';
+  public defaultRef = '';
   public ticket: Ticket;
 
   constructor(
@@ -19,6 +19,9 @@ export class TicketEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
     this.loadTicket();
   }
 
