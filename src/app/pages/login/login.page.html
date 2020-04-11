@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #loginForm="ngForm" autocomplete="off">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item>
+            <ion-input placeholder="Username" ngModel name="username" id="username" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Password" ngModel name="password" id="password" type="password" required>
+            </ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <ion-button expand="full" color="primary" (click)="login(loginForm)" [disabled]="loginForm.invalid">Login
+        </ion-button>
+        <ion-button [routerLink]="['/register']" expand="full" color="secondary">Register
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

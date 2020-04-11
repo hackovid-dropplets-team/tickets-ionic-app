@@ -18,6 +18,20 @@ const routes: Routes = [
   {
     path: 'my-volunteering',
     loadChildren: () => import('./pages/my-volunteering/my-volunteering.module').then( m => m.MyVolunteeringPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    data: {
+      noMenu: true
+    }
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule),
+    data: {
+      noMenu: true
+    }
   }
 ];
 

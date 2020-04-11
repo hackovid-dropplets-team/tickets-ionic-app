@@ -26,13 +26,17 @@ export class BaseApiService {
     localStorage.setItem('authToken', authToken);
   }
 
+  public deleteAuthToken() {
+    localStorage.removeItem('authToken');
+  }
+
   public getHeaders(): HttpHeaders {
-    const headers = new HttpHeaders({
+    let headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
     const authToken = this.getAuthToken();
     if (authToken) {
-      headers.append('Authorization', `Token ${authToken}`);
+      headers = headers.append('Authorization', `Token ${authToken}`);
     }
     return headers;
   }

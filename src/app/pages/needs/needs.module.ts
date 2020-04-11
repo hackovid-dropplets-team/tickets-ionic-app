@@ -8,7 +8,6 @@ import { NeedsPageRoutingModule } from './needs-routing.module';
 
 import { NeedsPage } from './needs.page';
 import { TicketItemComponent } from 'src/app/components/ticket-item/ticket-item.component';
-import { BasePageComponent } from '../base-page/base-page.component';
 
 @NgModule({
   imports: [
@@ -20,7 +19,6 @@ import { BasePageComponent } from '../base-page/base-page.component';
   declarations: [
     NeedsPage,
     TicketItemComponent,
-    BasePageComponent
   ]
 })
 export class NeedsPageModule {}
