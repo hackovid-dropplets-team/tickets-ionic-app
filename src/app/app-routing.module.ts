@@ -32,7 +32,11 @@ const routes: Routes = [
     data: {
       noMenu: true
     }
-  }
+  },
+  {
+    path: 'ticket',
+    loadChildren: () => import('./pages/ticket/ticket.module').then( m => m.TicketPageModule)
+  },
 ];
 
 @NgModule({
