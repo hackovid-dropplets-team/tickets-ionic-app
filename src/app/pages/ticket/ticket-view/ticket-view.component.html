@@ -18,8 +18,12 @@
  <ion-grid>
    <ion-row>
      <ion-col size="12">
-       <h1>{{ticket?.title}}</h1>
-       <p>{{ticket?.description}}</p>
+       <ng-container *ngIf="ticket">
+        <h1>{{ticket.title}}</h1>
+        <h3>{{ticket.description}}</h3>
+        <p><strong>Publicada: </strong>{{ticket.published|date: 'dd/MM/yy'}}</p>
+        <p><strong>Usuari: </strong>{{ticket.owner.username}}</p>
+       </ng-container>
      </ion-col>
    </ion-row>
  </ion-grid>

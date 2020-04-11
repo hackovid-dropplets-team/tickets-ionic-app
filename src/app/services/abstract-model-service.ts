@@ -20,7 +20,7 @@ export abstract class AbstractModelService<T extends DjangoModel> {
     }
 
     public edit(model: T) {
-        return this.api.put<T>(`${this.prefix}/${model.id}`, model);
+        return this.api.patch<T>(`${this.prefix}/${model.id}`, model);
     }
 
     public create(model: T) {

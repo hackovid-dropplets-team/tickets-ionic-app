@@ -3,7 +3,8 @@
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]="defaultRef"></ion-back-button>
     </ion-buttons>
+    <ion-title>Actualitza la necessitat</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<app-ticket-form></app-ticket-form>
+<app-ticket-form [model]="ticket"></app-ticket-form>

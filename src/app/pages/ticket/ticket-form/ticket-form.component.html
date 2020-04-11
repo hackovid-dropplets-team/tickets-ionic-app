@@ -1,11 +1,26 @@
 <ion-content>
-  test
+  <form #form="ngForm" autocomplete="off">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item>
+            <ion-label position="floating">Títol</ion-label>
+            <ion-input ngModel name="title" id="title" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Descripció</ion-label>
+            <ion-textarea ngModel name="description" id="description" type="text">
+            </ion-textarea>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-button expand="full" color="primary">
-    <ion-icon name="construct-outline"></ion-icon>
-    <span class="ion-margin-start ion-margin-end">Puc Ajudar!</span>
-    <ion-icon name="construct-outline"></ion-icon>
+  <ion-button (click)="save(form)" [disabled]="form.invalid" expand="full" color="primary">
+    <span>Desa</span>
+    <ion-icon slot="start" name="pencil-outline"></ion-icon>
   </ion-button>
 </ion-footer>

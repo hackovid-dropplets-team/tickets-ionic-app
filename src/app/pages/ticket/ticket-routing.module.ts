@@ -7,6 +7,13 @@ import { TicketAddComponent } from './ticket-add/ticket-add.component';
 
 const routes: Routes = [
   {
+    path: 'add',
+    component: TicketAddComponent,
+    data: {
+      noMenu: true
+    }
+  },
+  {
     path: ':id',
     component: TicketViewComponent,
     data: {
@@ -20,13 +27,6 @@ const routes: Routes = [
       noMenu: true
     }
   },
-  {
-    path: 'add',
-    component: TicketAddComponent,
-    data: {
-      noMenu: true
-    }
-  }
 ];
 
 @NgModule({

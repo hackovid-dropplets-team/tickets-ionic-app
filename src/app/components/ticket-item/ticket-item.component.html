@@ -1,9 +1,11 @@
 <ion-card [routerLink]="['/ticket',ticket.id]">
   <ion-card-header>
     <ion-card-title>{{ticket.title}}</ion-card-title>
+    <ion-card-subtitle>{{ticket.description}}</ion-card-subtitle>
   </ion-card-header>
 
   <ion-card-content>
-   {{ticket.description}}
+   <p><strong>Publicada: </strong>{{ticket.published|date: 'dd/MM/yy'}}</p>
+   <p><strong>Usuari: </strong>{{ticket.owner.username}}</p>
   </ion-card-content>
 </ion-card>
