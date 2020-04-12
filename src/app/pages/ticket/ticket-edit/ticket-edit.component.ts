@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ticket } from 'src/app/classes/ticket';
 import { TicketService } from 'src/app/services/tickets.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticket-edit',
@@ -16,6 +16,7 @@ export class TicketEditComponent implements OnInit {
   constructor(
     public ticketService: TicketService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -28,6 +29,11 @@ export class TicketEditComponent implements OnInit {
   protected loadTicket() {
     const id = this.route.snapshot.paramMap.get('id');
     this.defaultRef = `/ticket/${id}`;
-    this.ticketService.get(id).subscribe(ticket => this.ticket = ticket);
+    this.ticketService.get(id).subscribe(ticket => {
+      if (!ticket.is_owner) {
+        this.router.navigate([this.defaultRef]);
+      }
+      this.ticket = ticket;
+    });
   }
 }

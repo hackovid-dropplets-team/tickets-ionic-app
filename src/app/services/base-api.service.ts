@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -41,9 +41,9 @@ export class BaseApiService {
     return headers;
   }
 
-  public get<T>(path: string): Observable<T> {
+  public get<T>(path: string, params?: HttpParams): Observable<T> {
     const fullPath: string = this.getFullPath(path);
-    return this.http.get<T>(fullPath, { headers: this.getHeaders() });
+    return this.http.get<T>(fullPath, { headers: this.getHeaders(), params });
   }
 
   public post<T>(path: string, data: any): Observable<T> {

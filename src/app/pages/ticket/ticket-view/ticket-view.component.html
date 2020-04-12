@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['edit']">
+      <ion-button [routerLink]="['edit']" *ngIf="ticket && ticket.is_owner">
         <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
       </ion-button>
       <ion-button>
@@ -23,13 +23,14 @@
         <h3>{{ticket.description}}</h3>
         <p><strong>Publicada: </strong>{{ticket.published|date: 'dd/MM/yy'}}</p>
         <p><strong>Usuari: </strong>{{ticket.owner.username}}</p>
+        <p><strong>Codi Postal: </strong>{{ticket.zip_code}}</p>
        </ng-container>
      </ion-col>
    </ion-row>
  </ion-grid>
 </ion-content>
 
-<ion-footer class="ion-no-border">
+<ion-footer class="ion-no-border" *ngIf="ticket && !ticket.is_owner">
   <ion-button expand="full" color="primary">
     <ion-icon name="construct-outline"></ion-icon>
     <span class="ion-margin-start ion-margin-end">Puc Ajudar!</span>

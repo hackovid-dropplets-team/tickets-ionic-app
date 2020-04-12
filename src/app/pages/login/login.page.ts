@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AppService } from "src/app/app.service";
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-login',
