@@ -15,8 +15,6 @@ export class LoginRequiredGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log(state);
-      console.log(next);
     return this.isLogged(state.url);
   }
   // canActivateChild(
