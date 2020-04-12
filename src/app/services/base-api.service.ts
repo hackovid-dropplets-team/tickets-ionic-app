@@ -46,6 +46,10 @@ export class BaseApiService {
     return this.http.get<T>(fullPath, { headers: this.getHeaders(), params });
   }
 
+  public getUrl<T>(url: string) {
+    return this.http.get<T>(url, { headers: this.getHeaders() });
+  }
+
   public post<T>(path: string, data: any): Observable<T> {
     const fullPath: string = this.getFullPath(path);
     return this.http.post<T>(fullPath, data, { headers: this.getHeaders() });

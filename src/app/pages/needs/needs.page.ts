@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TicketService } from 'src/app/services/tickets.service';
 import { Ticket } from 'src/app/classes/ticket';
 import { HttpParams } from '@angular/common/http';
+import { BaseApiService } from "src/app/services/base-api.service";
+import { DjangoPaginationResult } from "src/app/classes/django-model";
 
 @Component({
   selector: 'app-needs',
@@ -17,9 +19,11 @@ export class NeedsPage implements OnInit {
     this.zipCodeVal = val;
     this.loadTickets();
   }
+  public next: string;
   public tickets: Array<Ticket> = [];
   constructor(
     protected ticketsService: TicketService,
+    protected api: BaseApiService,
   ) { }
 
   ngOnInit() {
@@ -32,7 +36,21 @@ export class NeedsPage implements OnInit {
       if (this.zipCode) {
         query = query.set('zip', this.zipCode);
       }
-      this.ticketsService.getAll(query).subscribe(tickets => this.tickets = tickets);
+      this.ticketsService.getAll(query).subscribe(result =>  {
+        this.updateResult(result);
+      });
+  }
+
+  public loadData($event) {
+    this.api.getUrl<DjangoPaginationResult<Ticket>>(this.next).subscribe(result => {
+      this.updateResult(result);
+      $event.target.complete();
+    });
+  }
+
+  protected updateResult(result: DjangoPaginationResult<Ticket>) {
+    this.tickets = [...this.tickets,...result.results];
+    this.next = result.next;
   }
 
 }

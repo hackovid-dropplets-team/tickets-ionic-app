@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { BaseApiService } from './base-api.service';
-import { DjangoModel } from '../classes/django-model';
+import { DjangoModel, DjangoPaginationResult } from '../classes/django-model';
 import { HttpParams } from '@angular/common/http';
 
 export abstract class AbstractModelService<T extends DjangoModel> {
@@ -12,9 +12,8 @@ export abstract class AbstractModelService<T extends DjangoModel> {
     ) {
     }
 
-    public getAll(query?: HttpParams): Observable<Array<T>> {
-        console.log(query)
-        return this.api.get<Array<T>>(this.prefix, query);
+    public getAll(query?: HttpParams): Observable<DjangoPaginationResult<T>> {
+        return this.api.get<DjangoPaginationResult<T>>(this.prefix, query);
     }
 
     public get(slug: string): Observable<T> {
