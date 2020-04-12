@@ -32,13 +32,14 @@ export class NeedsPage implements OnInit {
 
 
   protected loadTickets() {
-      let query = new HttpParams();
-      if (this.zipCode) {
-        query = query.set('zip', this.zipCode);
-      }
-      this.ticketsService.getAll(query).subscribe(result =>  {
-        this.updateResult(result);
-      });
+    let query = new HttpParams();
+    if (this.zipCode) {
+      query = query.set('zip', this.zipCode);
+    }
+    this.ticketsService.getAll(query).subscribe(result => {
+      this.tickets = [];
+      this.updateResult(result);
+    });
   }
 
   public loadData($event) {
@@ -49,7 +50,7 @@ export class NeedsPage implements OnInit {
   }
 
   protected updateResult(result: DjangoPaginationResult<Ticket>) {
-    this.tickets = [...this.tickets,...result.results];
+    this.tickets = [...this.tickets, ...result.results];
     this.next = result.next;
   }
 

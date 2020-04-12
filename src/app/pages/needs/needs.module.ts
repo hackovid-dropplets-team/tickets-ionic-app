@@ -7,18 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { NeedsPageRoutingModule } from './needs-routing.module';
 
 import { NeedsPage } from './needs.page';
-import { TicketItemComponent } from 'src/app/components/ticket-item/ticket-item.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NeedsPageRoutingModule
+    NeedsPageRoutingModule,
+    SharedModule,
   ],
   declarations: [
     NeedsPage,
-    TicketItemComponent,
   ]
 })
 export class NeedsPageModule {}

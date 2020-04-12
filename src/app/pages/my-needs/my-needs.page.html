@@ -5,5 +5,17 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let ticket of tickets" sizeSm="6" sizeXs="12" sizeMd="4" sizeLg="3">
+        <app-ticket-item [ticket]="ticket"></app-ticket-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll (ionInfinite)="loadData($event)" [disabled]="!next">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

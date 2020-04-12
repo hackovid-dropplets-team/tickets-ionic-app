@@ -19,12 +19,12 @@ export class AppComponent implements OnInit {
     {
       title: 'Puc ajudar?',
       url: '',
-      icon: 'mail'
+      icon: 'construct'
     },
     {
       title: 'Necessito',
-      url: '/my-needs',
-      icon: 'mail'
+      url: '/necessito',
+      icon: 'bandage'
     },
   ];
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginRequiredGuard } from './guards/login-required.guard';
 
 const routes: Routes = [
   {
@@ -8,7 +9,8 @@ const routes: Routes = [
   },
   {
     path: 'necessito',
-    loadChildren: () => import('./pages/my-needs/my-needs.module').then( m => m.MyNeedsPageModule)
+    loadChildren: () => import('./pages/my-needs/my-needs.module').then( m => m.MyNeedsPageModule),
+    canActivate: [LoginRequiredGuard]
   },
   {
     path: 'my-volunteering',
