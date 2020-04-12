@@ -20,6 +20,9 @@ export class AuthService {
     public api: BaseApiService,
   ) {
   }
+  public isLoggedIn(): boolean {
+    return !!this.api.getAuthToken();
+  }
 
   public login(username: string, password: string) {
     return this.api.post<{ key: string }>(`${this.prefix}/login`, { username, password }).pipe(tap((res) => {

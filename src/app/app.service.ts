@@ -9,7 +9,4 @@ export class AppService {
 
   constructor() { }
 
-  public isLoggedIn(): boolean {
-    return !!this.user;
-  }
 }

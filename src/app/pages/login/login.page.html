@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>Login</ion-title>
   </ion-toolbar>
@@ -27,7 +27,7 @@
         <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         <ion-button expand="full" color="primary" (click)="login(loginForm)" [disabled]="loginForm.invalid">Entrar
         </ion-button>
-        <ion-button [routerLink]="['/registre']" expand="full" color="secondary">Registrar-se
+        <ion-button [routerLink]="['/registre']" [queryParams]="{return: return}" expand="full" color="secondary">Registrar-se
         </ion-button>
       </ion-col>
     </ion-row>
