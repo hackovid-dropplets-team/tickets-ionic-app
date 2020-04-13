@@ -6,4 +6,5 @@ export interface Ticket  extends DjangoModel {
     description: string;
     owner: User;
     is_owner: boolean;
+    chat_id?: number;
 }

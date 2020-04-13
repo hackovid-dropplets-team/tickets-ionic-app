@@ -31,7 +31,7 @@
 </ion-content>
 
 <ion-footer class="ion-no-border" *ngIf="ticket && !ticket.is_owner">
-  <ion-button expand="full" color="primary">
+  <ion-button expand="full" color="primary" (click)="goToChat()">
     <ion-icon name="construct-outline"></ion-icon>
     <span class="ion-margin-start ion-margin-end">Puc Ajudar!</span>
     <ion-icon name="construct-outline"></ion-icon>

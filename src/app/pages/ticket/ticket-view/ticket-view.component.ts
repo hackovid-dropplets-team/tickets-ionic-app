@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Ticket } from 'src/app/classes/ticket';
 import { TicketService } from 'src/app/services/tickets.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { XatsService } from 'src/app/services/xats.service';
 
 @Component({
   selector: 'app-ticket-view',
@@ -15,6 +16,8 @@ export class TicketViewComponent implements OnInit {
   constructor(
     public ticketService: TicketService,
     private route: ActivatedRoute,
+    protected router: Router,
+    protected xatService: XatsService,
   ) {
   }
 
@@ -26,5 +29,15 @@ export class TicketViewComponent implements OnInit {
   protected loadTicket() {
     const id = this.route.snapshot.paramMap.get('id');
     this.ticketService.get(id).subscribe(ticket => this.ticket = ticket);
+  }
+
+  public goToChat() {
+    if (this.ticket.chat_id) {
+      this.router.navigate(['xats', this.ticket.chat_id]);
+      return;
+    }
+    this.xatService.create({ ticket: this.ticket }).subscribe(xat => {
+      this.router.navigate(['dialogs', xat.id]);
+    });
   }
 }

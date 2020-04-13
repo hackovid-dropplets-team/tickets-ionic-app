@@ -24,7 +24,7 @@ export abstract class AbstractModelService<T extends DjangoModel> {
         return this.api.patch<T>(`${this.prefix}/${model.id}`, model);
     }
 
-    public create(model: T) {
+    public create(model: any) {
         return this.api.post<T>(`${this.prefix}`, model);
     }
 
