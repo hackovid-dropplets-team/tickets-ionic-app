@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'ticket',
     loadChildren: () => import('./pages/ticket/ticket.module').then( m => m.TicketPageModule)
   },
+  {
+    path: 'xats',
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+  },
 ];
 
 @NgModule({

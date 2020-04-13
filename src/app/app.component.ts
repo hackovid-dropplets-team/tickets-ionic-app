@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Router, RouterEvent, ActivationStart } from "@angular/router";
+import { Router, RouterEvent, ActivationStart, NavigationEnd } from "@angular/router";
 import { AuthService } from "./services/auth.service";
 import { AppService } from "./app.service";
 
@@ -14,18 +14,26 @@ import { AppService } from "./app.service";
 })
 export class AppComponent implements OnInit {
   public noMenu = true;
-  public selectedIndex = 0;
+  protected url: string;
+  // public selectedIndex = 0;
   public appPages = [
     {
       title: 'Puc ajudar?',
-      url: '',
+      url: '/',
       icon: 'construct'
     },
+  ];
+  public loggedPages = [
     {
       title: 'Necessito',
       url: '/necessito',
       icon: 'bandage'
     },
+    {
+      title: 'Xats',
+      url: '/xats',
+      icon: 'chatbox'
+    }
   ];
 
   constructor(
@@ -52,6 +60,9 @@ export class AppComponent implements OnInit {
       if (event instanceof ActivationStart) {
         this.noMenu = !!event.snapshot.data.noMenu;
       }
+      if (event instanceof NavigationEnd) {
+        this.url = event.url;
+      }
     });
   }
 
@@ -68,4 +79,13 @@ export class AppComponent implements OnInit {
       this.appService.user = undefined;
     });
   }
+
+  public isActive(url: string): boolean {
+    if (!this.url) {
+      return false;
+    }
+    const urlSplit = url.split('/');
+    return urlSplit.join('/') === this.url.split('/').slice(0, urlSplit.length).join('/');
+  }
+
 }

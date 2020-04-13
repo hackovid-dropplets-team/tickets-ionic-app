@@ -4,6 +4,7 @@ import { Ticket } from 'src/app/classes/ticket';
 import { HttpParams } from '@angular/common/http';
 import { BaseApiService } from "src/app/services/base-api.service";
 import { DjangoPaginationResult } from "src/app/classes/django-model";
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-needs',
@@ -24,6 +25,7 @@ export class NeedsPage implements OnInit {
   constructor(
     protected ticketsService: TicketService,
     protected api: BaseApiService,
+    private localNotifications: LocalNotifications
   ) { }
 
   ngOnInit() {

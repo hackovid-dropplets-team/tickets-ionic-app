@@ -1,5 +1,7 @@
 {
   "name": "tickets-ionic-app",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
