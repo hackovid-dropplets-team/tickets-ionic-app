@@ -1,3 +1,21 @@
-<p>
-  chat-view works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/xats"></ion-back-button>
+    </ion-buttons>
+    <ion-label *ngIf="xat">
+      <h2>{{xat.voluntary.username}}</h2>
+      <p>{{xat.ticket.title}}</p>
+    </ion-label>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="xat">
+  send-message
+</ion-footer>
