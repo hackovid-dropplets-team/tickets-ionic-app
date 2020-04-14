@@ -37,7 +37,7 @@ export class TicketViewComponent implements OnInit {
       return;
     }
     this.xatService.create({ ticket: this.ticket }).subscribe(xat => {
-      this.router.navigate(['dialogs', xat.id]);
+      this.router.navigate(['xats', xat.id]);
     });
   }
 }
